@@ -1,14 +1,14 @@
 url = "https://kasir-api.belajarqa.com"
 const request = require("supertest")(url)
-const expect = require("chai").expect;
+const expect = require("chai").expect; // assertion library
 
 var token = {};
 // start testing
-describe("Register", function(){
+describe("Register", function() {
     it("Register Successful", async function() { //testcase1
         const response = await request
             .post("/registration") // HTTP method dan endpoint
-            .set("Content-Type", "application/json")
+            .set("Content-Type", "application/json") // Headers
             .send({
                 name: "Toko Serbaguna",
                 email: "toko1@gmail.com",
@@ -142,8 +142,8 @@ describe("Login", function(){
     })
 });
 
-describe("User", function(){
-    it("Create User Successful", async function() { //testcase1
+describe("Create User", function(){
+    it("Create User Successful", async function() { // TC 1
         const response = await request
             .post("/users") // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -157,7 +157,7 @@ describe("User", function(){
         expect(response.body.message).to.eql('User berhasil ditambahkan')
         userId = response.body.data.userId
     })
-    it("Create User Empty Name", async function() { //testcase2
+    it("Create User Empty Name", async function() { // TC 2
         const response = await request
             .post("/users") // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -170,7 +170,7 @@ describe("User", function(){
         expect(response.body.status).to.eql('fail');
         expect(response.body.message).to.eql('\"name\" is not allowed to be empty');
     })
-    it("Create User Empty Email", async function() { //testcase3
+    it("Create User Empty Email", async function() { // TC 3
         const response = await request
             .post("/users") // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -183,7 +183,7 @@ describe("User", function(){
         expect(response.body.status).to.eql('fail')
         expect(response.body.message).to.eql('\"email\" is not allowed to be empty')
     })
-    it("Create User Empty Password", async function() { //testcase4
+    it("Create User Empty Password", async function() { // TC 4
         const response = await request
             .post("/users") // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -196,7 +196,7 @@ describe("User", function(){
         expect(response.body.status).to.eql('fail')
         expect(response.body.message).to.eql('\"password\" is not allowed to be empty')
     })
-    it("Create User Invalid Email", async function() { //testcase5
+    it("Create User Invalid Email", async function() { // TC 5
         const response = await request
             .post("/users") // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -209,7 +209,7 @@ describe("User", function(){
         expect(response.body.status).to.eql('fail')
         expect(response.body.message).to.eql('\"email\" must be a valid email')
     })
-    it("Create User Empty", async function() { //testcase6
+    it("Create User Empty", async function() { // TC 6
         const response = await request
             .post("/users") // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -222,14 +222,14 @@ describe("User", function(){
 });
 
 describe("Get User Detail", function(){
-    it("Get User Detail Successful", async function() { //testcase1
+    it("Get User Detail Successful", async function() { // TC 7
         const response = await request
             .get(`/users/${userId}`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).to.eql(200)
         expect(response.body.status).to.eql('success')
     })
-    it("Get User Detail All Users", async function() { //testcase2
+    it("Get User Detail All Users", async function() { // TC 8
         const response = await request
             .get(`/users`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -239,7 +239,7 @@ describe("Get User Detail", function(){
 });
 
 describe("Get User List", function(){
-    it("Get User List Successful", async function() { //testcase1
+    it("Get User List Successful", async function() { // TC 9
         const response = await request
             .get(`/users`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -249,7 +249,7 @@ describe("Get User List", function(){
 });
 
 describe("Update User", function(){
-    it("Update User Successful", async function() { //testcase1
+    it("Update User Successful", async function() { // TC 10
         const response = await request
             .put(`/users/${userId}`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -261,7 +261,7 @@ describe("Update User", function(){
         expect(response.body.status).to.eql('success')
         expect(response.body.message).to.eql('User berhasil diupdate')
     })
-    it("Update User Invalid Id", async function() { //testcase2
+    it("Update User Invalid Id", async function() { // TC 11
         const response = await request
             .put(`/users/123`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -276,7 +276,7 @@ describe("Update User", function(){
 });
 
 describe("Delete User", function(){
-    it("Delete User Successful", async function() { //testcase1
+    it("Delete User Successful", async function() { // TC 12
         const response = await request
             .delete(`/users/${userId}`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -284,7 +284,7 @@ describe("Delete User", function(){
         expect(response.body.status).to.eql('success')
         expect(response.body.message).to.eql('User berhasil dihapus')
     })
-    it("Delete User Invalid Id", async function() { //testcase2
+    it("Delete User Invalid Id", async function() { // TC 13
         const response = await request
             .delete(`/users/abc`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -295,7 +295,7 @@ describe("Delete User", function(){
 });
 
 describe("Add Unit", function(){
-    it("Add Unit Successful", async function() { //testcase1
+    it("Add Unit Successful", async function() { // TC 14
         const response = await request
             .post(`/units`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -308,7 +308,7 @@ describe("Add Unit", function(){
         expect(response.body.status).to.eql('success')
         expect(response.body.message).to.eql('Unit berhasil ditambahkan')
     })
-    it("Add Unit Empty Name", async function() { //testcase1
+    it("Add Unit Empty Name", async function() { // TC 15
         const response = await request
             .post(`/units`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -320,7 +320,7 @@ describe("Add Unit", function(){
         expect(response.body.status).to.eql('fail')
         expect(response.body.message).to.eql('name is required, description is optional')
     })
-    it("Add Unit Empty Description", async function() { //testcase1
+    it("Add Unit Empty Description", async function() { // TC 16
         const response = await request
             .post(`/units`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -335,7 +335,7 @@ describe("Add Unit", function(){
 });
 
 describe("Get Unit Detail", function(){
-    it("Get Unit Detail Successful", async function() { //testcase1
+    it("Get Unit Detail Successful", async function() { // TC 17
         const response = await request
             .get(`/units/${unitId}`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -345,7 +345,7 @@ describe("Get Unit Detail", function(){
 });
 
 describe("Get Unit List", function(){
-    it("Get Unit List Successful", async function() { //testcase2
+    it("Get Unit List Successful", async function() { // TC 18
         const response = await request
             .get(`/units`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -355,7 +355,7 @@ describe("Get Unit List", function(){
 });
 
 describe("Update Unit", function(){
-    it("Update Unit Successful", async function() { //testcase1
+    it("Update Unit Successful", async function() { // TC 19
         const response = await request
             .put(`/units/${unitId}`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -366,7 +366,7 @@ describe("Update Unit", function(){
         expect(response.status).to.eql(200)
         expect(response.body.status).to.eql('success')
     })
-    it("Update Unit Invalid unitId", async function() { //testcase2
+    it("Update Unit Invalid unitId", async function() { // TC 20
         const response = await request
             .put(`/units/abc`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
@@ -381,14 +381,14 @@ describe("Update Unit", function(){
 });
 
 describe("Delete Unit", function(){
-    it("Delete Unit Successful", async function() { //testcase1
+    it("Delete Unit Successful", async function() { // TC 21
         const response = await request
             .delete(`/units/${unitId}`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
         expect(response.status).to.eql(200)
         expect(response.body.status).to.eql('success')
     })
-    it("Delete Unit Invalid Id", async function() { //testcase2
+    it("Delete Unit Invalid Id", async function() { // TC 22
         const response = await request
             .delete(`/units/abc`) // HTTP method dan endpoint
             .set('Authorization', `Bearer ${token}`)
