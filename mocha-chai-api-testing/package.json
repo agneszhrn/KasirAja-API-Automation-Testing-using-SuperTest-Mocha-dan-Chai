@@ -4,8 +4,7 @@
   "description": "Automation API Sanbercode 45",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "kasirAja": "mocha kasirAja/*.js"
+    "test": "mocha kasirAja/*.js --timeout 10000"
   },
   "author": "Agnes",
   "license": "ISC",
