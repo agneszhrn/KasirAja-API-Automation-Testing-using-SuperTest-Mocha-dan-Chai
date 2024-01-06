@@ -1,4 +1,4 @@
-<h1 align="center">KasirAja-API-Automation-Testing-using-SuperTest-Mocha-and-Chai</h1>
+<h1 align="center">KasirAja API Automation Testing using SuperTest Mocha and Chai</h1>
 
 SuperTest, Mocha and Chai are testing tools and assertion libraries for JavaScript that I use to create automated API tests for KasirAja. To get started with testing, please follow these steps:
 
