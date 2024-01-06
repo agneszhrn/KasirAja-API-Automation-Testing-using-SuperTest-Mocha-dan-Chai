@@ -5,7 +5,7 @@ SuperTest, Mocha and Chai are testing tools and assertion libraries for JavaScri
 1. Clone this repo to your computer.
 2. Navigate to the `mocha-chai-api-testing` directory.
 3. Run the command `npm install` to install all dependencies.
-4. Run the command `npm test` to run all tests.
+4. Run the command `npm run test` to run all tests.
 
 
 #### KasirAja API Contract :
