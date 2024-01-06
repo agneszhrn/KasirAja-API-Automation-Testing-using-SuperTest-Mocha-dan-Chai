@@ -8,8 +8,7 @@ SuperTest, Mocha and Chai are testing tools and assertion libraries for JavaScri
 4. Run the command `npm run test` to run all tests.
 
 
-#### KasirAja API Contract :
-https://docs.google.com/document/d/1TdndXchcDym1IMMCT6aLxCza5wOjJHc7/edit?usp=drive_link&ouid=115063764332650422029&rtpof=true&sd=true
+<b>KasirAja API Contract<b> : [Link](https://docs.google.com/document/d/1TdndXchcDym1IMMCT6aLxCza5wOjJHc7/edit?usp=drive_link&ouid=115063764332650422029&rtpof=true&sd=true)
 
 
 ### Contact Me
